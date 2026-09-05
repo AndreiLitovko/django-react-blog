@@ -1,88 +1,85 @@
-\# Django React Blog
-
-
+# Django React Blog
 
 Fullstack-платформа для блога: REST API на Django и клиент на React.
 
-
-
 Пользователи могут регистрироваться, входить в аккаунт, читать посты, создавать записи, редактировать свой профиль и просматривать авторов.
 
+## Возможности
 
+- регистрация и авторизация через JWT
+- CRUD для постов
+- редактировать и удалять пост может только автор
+- кастомная модель пользователя и страница профиля
+- категории, пагинация и фильтрация постов
+- загрузка изображений для постов и профиля
+- список авторов
+- защищённые маршруты на frontend
 
-\## Возможности
+## Стек
 
+Backend: Python, Django 5, Django REST Framework, Simple JWT, SQLite, Pillow
 
+Frontend: React, Vite, React Router, React Query, Axios, Tailwind CSS
 
-\- регистрация и авторизация через JWT
+## Структура проекта
 
-\- CRUD для постов
+- Backend — Django REST API
+- Frontend — React-приложение
 
-\- редактировать и удалять пост может только автор
+## Запуск проекта локально
 
-\- кастомная модель пользователя и страница профиля
+Нужны Python 3, Node.js и npm.
 
-\- категории, пагинация и фильтрация постов
+Backend:
 
-\- загрузка изображений для постов и профиля
+cd Backend
+python -m venv .venv
+source .venv/Scripts/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py runserver
 
-\- список авторов
+API будет доступен по адресу: http://127.0.0.1:8000
 
-\- защищённые маршруты на frontend
+Frontend:
 
+cd Frontend
+npm install
+echo "VITE_BASE_URL=http://127.0.0.1:8000" > .env
+npm run dev
 
+Клиент будет доступен по адресу: http://localhost:5173
 
-\## Стек
+## Переменные окружения
 
+Backend/.env
 
+DJANGO_SECRET_KEY=replace-with-strong-secret
+DJANGO_DEBUG=True
+DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:5173
 
-\*\*Backend\*\*
+Frontend/.env
 
+VITE_BASE_URL=http://127.0.0.1:8000
 
+Файл .env не хранится в Git. Для примера используй Backend/.env.example.
 
-\- Python
+## Основные API endpoints
 
-\- Django 5
+- POST /register_user/ — регистрация
+- POST /token/ — получение JWT
+- POST /token_refresh/ — обновление токена
+- GET /blog_list — список постов
+- GET /blogs/<slug> — один пост
+- POST /create_blog/ — создать пост
+- PUT /update_blog/<id>/ — обновить пост
+- POST /delete_blog/<id>/ — удалить пост
+- GET /authors/ — список авторов
+- PUT /update_user/ — обновить профиль
 
-\- Django REST Framework
+## Автор
 
-\- Simple JWT
-
-\- SQLite
-
-\- Pillow
-
-
-
-\*\*Frontend\*\*
-
-
-
-\- React
-
-\- Vite
-
-\- React Router
-
-\- React Query
-
-\- Axios
-
-\- Tailwind CSS
-
-
-
-\## Структура проекта
-
-
-
-```text
-
-django-react-blog/
-
-├── Backend/     # Django REST API
-
-├── Frontend/    # React-приложение
-
-└── README.md
-
+Андрей Литовко
+GitHub: https://github.com/AndreiLitovko
