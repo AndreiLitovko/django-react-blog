@@ -15,3 +15,8 @@ Backend/static/
 Frontend/node_modules/
 Frontend/dist/
 Frontend/dist-ssr/
+
+# Environment files
+.env
+**/.env
+!**/.env.example
